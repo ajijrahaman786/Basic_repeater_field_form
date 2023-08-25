@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form Field</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="container">
+        <form action="#" id="mainForm">
+          <div>
+            <div class="users-name">
+              <label for="usersName">Enter Your Name:</label>
+              <input type="text" id="name" placeholder="Enter Your Name" />
+            </div>
+            <div class="users-email">
+              <label for="usersEmail">Your Email:</label>
+              <input type="email" id="email" placeholder="Your Email" />
+            </div>
+          </div>
+        </form>
+        <div id="addForm"></div>
+        <div class="submit-btn">
+          <button type="button" id="addNew">Add New</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // catch the addNewBtn
+      const addNewBtn = document.getElementById("addNew");
+      // catch the mainform id for geeting form
+      const form = document.getElementById("mainForm");
+      // catch the add div where showing our new form
+      const added = document.getElementById("addForm");
+
+      // set event for add new btn
+      addNewBtn.addEventListener("click", function () {
+        // clone from old form to a new form
+        const new_form = form.children[0].cloneNode(true);
+        added.append(new_form);
+
+        // remove btn
+          let removebtn = document.createElement("button");
+          removebtn.innerHTML = "Remove";
+          // console.log(removebtn);
+          removebtn.addEventListener("click", function () {
+            added.removeChild(new_form);
+          });
+          new_form.appendChild(removebtn);
+      
+      });
+
+      
+    </script>
+  </body>
+</html>
